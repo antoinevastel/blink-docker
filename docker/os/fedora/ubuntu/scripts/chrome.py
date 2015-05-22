@@ -56,7 +56,7 @@ class Chrome(Browser):
             
     def runBrowser(self):
         chromePath = self.find("chrome","./browsers/chrome/")
-        return subprocess.Popen(chromePath+" --password-store=basic --load-extension=/home/blink/browsers/extensions/ups/ --no-default-browser-check --no-first-run",shell=True)
+        return subprocess.Popen(chromePath+" --password-store=basic --load-extension=/home/blink/browsers/extensions/ups/ --no-sandbox --no-default-browser-check --no-first-run",shell=True)
     
         
     #################################  BOOKMARKS  #################################

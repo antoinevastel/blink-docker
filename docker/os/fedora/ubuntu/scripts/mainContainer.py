@@ -9,6 +9,7 @@ import utils
 import time
 from chrome import Chrome
 from firefox import Firefox
+import signal
 
 ############### Container Class
 class Container(object):
@@ -116,6 +117,8 @@ class Container(object):
                         "browser":"Firefox"}
             utils.writeJSONDataFile(jsonData,Container.dataFile)
 
+def sigint_handler(signum, frame):
+    print("Waiting for data to be saved")
 
 ############### Main
 def main():
@@ -152,10 +155,11 @@ def main():
         while not shutdown :
             #We launch the browser
             browserProcess = browser.runBrowser()
-
+            signal.signal(signal.SIGINT, sigint_handler)
             #We wait for either the browsing session to be finished
             while not isinstance(browserProcess.poll(),int):
                 time.sleep(1)
+
 
             encryption = browser.exportData()
 
