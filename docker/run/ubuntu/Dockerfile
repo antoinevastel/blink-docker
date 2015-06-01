@@ -10,6 +10,7 @@ RUN export uid=1000 gid=1000 && \
 
 USER blink
 ENV HOME /home/blink
+ENV PULSE_SERVER tcp:172.17.42.1
 
-CMD sudo chown blink -R /home/blink && sudo chmod +x /home/blink/browsers/extensions/nativeApp/ups-host && python3 ~/mainContainer.py
-#CMD sudo chown blink -R /home/blink && sudo chmod +x /home/blink/browsers/extensions/nativeApp/ups-host && /bin/bash
+#CMD sudo chown blink -R /home/blink && sudo chmod +x /home/blink/browsers/extensions/nativeApp/ups-host && python3 ~/mainContainer.py
+CMD sudo chown blink -R /home/blink && sudo chmod +x /home/blink/browsers/extensions/nativeApp/ups-host && /bin/bash
