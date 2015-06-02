@@ -16,5 +16,5 @@ RUN mkdir /home/blink/plugins
 RUN mv /usr/lib64/mozilla/plugins/* /home/blink/plugins/
 
 RUN yum install -y tar && wget http://amiunique.irisa.fr/fontsFedora.tar.gz && tar -C /usr/share/fonts/ -xf fontsFedora.tar.gz && rm fontsFedora.tar.gz
-ADD ubuntu/scripts/*.py /home/blink/
+ADD ubuntu/scripts/* /home/blink/
 ADD updateContainer.py /home/blink/

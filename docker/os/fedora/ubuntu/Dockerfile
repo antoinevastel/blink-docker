@@ -1,5 +1,4 @@
 FROM ubuntu:14.04
-User root
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y wget djview-plugin browser-plugin-packagekit browser-plugin-spice browser-plugin-vlc gxineplugin kopete-plugin-thinklight kpartsplugin mozplugger rhythmbox-mozilla totem-mozilla x2goplugin xine-plugin gecko-mediaplayer gnupg2 sqlite3 libpango1.0-0 sudo python3 python3-numpy libnss3 \
         libgconf-2-4 libasound2  pulseaudio \
@@ -18,10 +17,7 @@ RUN mkdir -p /home/blink/.mozilla/plugins/
 RUN mkdir /home/blink/plugins/
 RUN mv /usr/lib/mozilla/plugins/* /home/blink/plugins/ && mv /home/blink/plugins/flashplugin-alternative.so /usr/lib/mozilla/plugins
 
-ENV PULSE_SERVER tcp:172.17.42.1
-
-
 RUN wget http://amiunique.irisa.fr/fontsUbuntu.tar.gz && tar -C /usr/share/fonts/ -xf fontsUbuntu.tar.gz && rm fontsUbuntu.tar.gz
-ADD scripts/*.py /home/blink/
+ADD scripts/* /home/blink/
 ADD updateContainer.py /home/blink/
 
